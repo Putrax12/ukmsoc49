@@ -6,7 +6,7 @@ import { g1, g2, g3, g4, g5, g6 } from "./assets";
 const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
-  whatsappNumber: "6285730603585",
+  whatsappNumber: "6281217759714",
   countdownTarget: new Date("2025-06-15T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",

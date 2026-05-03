@@ -14,7 +14,7 @@ const CONFIG = {
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbzVRqnfQdxbL4ukOgNwgr2jBAXS5S6cuBe6tNrR9ZV1lz5MG0ZQXtYC-8vg6iEEzZ2-WQ/exec",
+    "https://script.google.com/macros/s/AKfycbyszaF2aZOye-RS0RGpxqvl-D8DozLDYP9IV0EQbzxG8vmuVhhfGmOG2wXMHvsRx-Vl3w/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
     { nama: "Citra", nomor: "62881026585122", label: "Admin 1" },
@@ -1048,18 +1048,35 @@ function Gallery() {
         </div>
 
         <div className="relative">
-          <div className="flex gap-4 overflow-hidden">
+          {/* Mobile: 1 gambar full width */}
+          <div className="block md:hidden">
+            <div className="aspect-[3/4] overflow-hidden">
+              <img
+                src={GALERI[index]}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
+
+          {/* Desktop: 3 gambar */}
+          <div className="hidden md:flex gap-4">
             {[0, 1, 2].map((offset) => {
               const i = (index + offset) % GALERI.length;
               return (
-                <img
+                <div
                   key={i}
-                  src={GALERI[i]}
-                  className="w-1/3 h-80 object-cover"
-                />
+                  className="w-1/3 flex-shrink-0 aspect-[2/3] overflow-hidden"
+                >
+                  <img
+                    src={GALERI[i]}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
               );
             })}
           </div>
+
+          {/* Tombol navigasi */}
           <button
             onClick={prev}
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2"

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { bgImage, logo, home, away, third } from "./assets";
 import { g1, g2, g3, g4, g5, g6 } from "./assets";
 
@@ -6,18 +6,18 @@ import { g1, g2, g3, g4, g5, g6 } from "./assets";
 const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
-  whatsappNumber: "6281217759714",
-  countdownTarget: new Date("2025-06-15T23:59:59"),
+  whatsappNumber: "6285730603585",
+  countdownTarget: new Date("2026-06-15T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",
     templateId: "YOUR_TEMPLATE_ID",
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbyUfvS0d3fwz_gGjIbYwM1odD_yeoTl6zSXMGE_E6RgFCbKjR1HAxrIHN8WlK-A9ZMZVA/exec",
+    "https://script.google.com/macros/s/AKfycbxSPP9MNQFcSa66vWIVyTnEInKdDfvZNLzCVGdSjDq9Pin4Brf9zeOoLzXCrqPbOGuy9Q/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
-    { nama: "Citra", nomor: "62881026585122", label: "Admin 1" },
+    { nama: "Citra", nomor: "6281235285519", label: "Admin 1" },
     { nama: "Fahmi", nomor: "6285159526990", label: "Admin 2" },
     { nama: "Asep", nomor: "6287765540344", label: "Admin 3" },
   ],
@@ -1047,7 +1047,7 @@ function Gallery() {
           </h2>
         </div>
 
-        <div className="relative">
+        <div className="relative md:px-10">
           {/* Mobile: 1 gambar full width */}
           <div className="block md:hidden">
             <div className="aspect-[3/4] overflow-hidden">
@@ -1076,19 +1076,64 @@ function Gallery() {
             })}
           </div>
 
-          {/* Tombol navigasi */}
+          {/* Tombol overlay kiri — di luar gambar di desktop, overlay di mobile */}
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2"
+            className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 text-white text-xl md:left-0 -left-1"
+            style={{
+              background: "rgba(255,255,255,0.1)",
+              border: "0.5px solid rgba(255,255,255,0.2)",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = "rgba(255,255,255,0.25)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.background = "rgba(255,255,255,0.1)")
+            }
+            aria-label="Sebelumnya"
           >
-            ←
+            ‹
           </button>
+
+          {/* Tombol overlay kanan — di luar gambar di desktop, overlay di mobile */}
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2"
+            className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 text-white text-xl md:right-0 -right-1"
+            style={{
+              background: "rgba(255,255,255,0.1)",
+              border: "0.5px solid rgba(255,255,255,0.2)",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = "rgba(255,255,255,0.25)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.background = "rgba(255,255,255,0.1)")
+            }
+            aria-label="Berikutnya"
           >
-            →
+            ›
           </button>
+
+          {/* Dot indicator */}
+          <div className="flex justify-center gap-2 mt-5">
+            {GALERI.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Foto ${i + 1}`}
+                style={{
+                  height: "5px",
+                  borderRadius: "3px",
+                  border: "none",
+                  cursor: "pointer",
+                  background: i === index ? "#fff" : "#444",
+                  width: i === index ? "18px" : "5px",
+                  transition: "all 0.3s",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1103,7 +1148,7 @@ function Details() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-6 mb-16">
-          <span className="text-zinc-600 text-xs tracking-[0.3em]">05</span>
+          <span className="text-zinc-600 text-xs tracking-[0.3em]">04</span>
           <div className="flex-1 h-px bg-zinc-800" />
           <h2
             className="text-white font-black text-2xl tracking-[0.15em]"
@@ -1220,7 +1265,7 @@ function PreOrderInfo() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 border border-zinc-800 mb-16">
           {[
-            { label: "Batas Pre-Order", val: "15 JUNI 2025" },
+            { label: "Batas Pre-Order", val: "15 JUNI 2026" },
             { label: "Waktu Produksi", val: "7–14 HARI" },
             { label: "Estimasi Pengiriman", val: "2–5 HARI" },
           ].map((stat, i) => (
@@ -1583,7 +1628,7 @@ function OrderForm({ onSubmitSuccess }) {
 
           {/* Pembayaran */}
           <div className="flex items-center gap-6 mb-4 mt-4">
-            <span className="text-zinc-600 text-xs tracking-[0.3em]">06</span>
+            <span className="text-zinc-600 text-xs tracking-[0.3em]">07</span>
             <div className="flex-1 h-px bg-zinc-800" />
             <h2 className="text-white font-black text-2xl tracking-[0.15em]">
               PEMBAYARAN
@@ -1847,6 +1892,415 @@ function OrderForm({ onSubmitSuccess }) {
   );
 }
 
+// ── INVOICE CARD — komponen khusus untuk di-capture jadi gambar ──────────────
+function InvoiceCard({
+  data,
+  invoiceData,
+  hargaSatuan,
+  tambahanLengan,
+  hargaPerPcs,
+  total,
+  innerRef,
+  logoSrc,
+}) {
+  const fmt = (n) => "Rp " + n.toLocaleString("id-ID");
+
+  const produkNama = data?.produk || "—";
+  const isHome = produkNama.includes("HOME");
+  const isAway = produkNama.includes("AWAY");
+  const isThird = produkNama.includes("THIRD");
+  const produkColor = isHome
+    ? "#ffffff"
+    : isAway
+      ? "#800020"
+      : isThird
+        ? "#1a56db"
+        : "#cc0000";
+
+  const lenganPanjang =
+    data?.lenganPanjang === true || data?.lenganPanjang === "Ya (+Rp 15.000)";
+  const lenganColor = lenganPanjang ? "#cc0000" : "#444";
+  const lenganLabel = lenganPanjang ? "PANJANG" : "STANDAR";
+
+  return (
+    <div
+      ref={innerRef}
+      style={{
+        width: 480,
+        background: "#0a0a0a",
+        fontFamily: "Arial, sans-serif",
+        color: "#fff",
+        overflow: "hidden",
+      }}
+    >
+      {/* Red top accent */}
+      <div style={{ height: 3, background: "#cc0000" }} />
+
+      {/* Header */}
+      <div
+        style={{
+          background: "#111",
+          padding: "22px 28px",
+          borderBottom: "0.5px solid #1a1a1a",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          {logoSrc && (
+            <img
+              src={logoSrc}
+              alt="Logo"
+              style={{ width: 40, height: 40, objectFit: "contain" }}
+              crossOrigin="anonymous"
+            />
+          )}
+          <div>
+            <p
+              style={{
+                fontSize: 9,
+                letterSpacing: "0.4em",
+                color: "#555",
+                margin: "0 0 3px",
+              }}
+            >
+              UKM SOCCER 49ERS
+            </p>
+            <p
+              style={{
+                fontSize: 10,
+                color: "#444",
+                margin: 0,
+                letterSpacing: "0.15em",
+              }}
+            >
+              PRE-ORDER 2026
+            </p>
+          </div>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <p
+            style={{
+              fontSize: 11,
+              color: "#fff",
+              fontWeight: 700,
+              margin: "0 0 3px",
+              letterSpacing: "0.05em",
+            }}
+          >
+            {invoiceData?.nomorInvoice || "—"}
+          </p>
+          <p style={{ fontSize: 10, color: "#555", margin: 0 }}>
+            {invoiceData?.tgl} · {invoiceData?.jam} WIB
+          </p>
+        </div>
+      </div>
+
+      {/* Detail pemesan */}
+      <div
+        style={{ padding: "18px 28px", borderBottom: "0.5px solid #1a1a1a" }}
+      >
+        <p
+          style={{
+            fontSize: 9,
+            color: "#555",
+            letterSpacing: "0.25em",
+            margin: "0 0 10px",
+          }}
+        >
+          DETAIL PEMESAN
+        </p>
+        <div style={{ display: "flex", gap: 32 }}>
+          <div>
+            <p
+              style={{
+                fontSize: 9,
+                color: "#555",
+                letterSpacing: "0.15em",
+                margin: "0 0 4px",
+              }}
+            >
+              NAMA
+            </p>
+            <p
+              style={{
+                fontSize: 14,
+                fontWeight: 700,
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              {data?.namaLengkap || "—"}
+            </p>
+          </div>
+          <div>
+            <p
+              style={{
+                fontSize: 9,
+                color: "#555",
+                letterSpacing: "0.15em",
+                margin: "0 0 4px",
+              }}
+            >
+              WHATSAPP
+            </p>
+            <p
+              style={{
+                fontSize: 14,
+                fontWeight: 700,
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              {data?.whatsapp || "—"}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Detail pesanan */}
+      <div
+        style={{ padding: "18px 28px", borderBottom: "0.5px solid #1a1a1a" }}
+      >
+        <p
+          style={{
+            fontSize: 9,
+            color: "#555",
+            letterSpacing: "0.25em",
+            margin: "0 0 10px",
+          }}
+        >
+          DETAIL PESANAN
+        </p>
+        <div
+          style={{
+            background: "#141414",
+            borderLeft: "2px solid #cc0000",
+            border: "0.5px solid #222",
+            borderLeft: "2px solid #cc0000",
+            padding: "14px 18px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: 12,
+            }}
+          >
+            <p
+              style={{
+                fontSize: 9,
+                color: "#555",
+                letterSpacing: "0.2em",
+                margin: 0,
+              }}
+            >
+              PRODUK
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              {isThird && (
+                <span
+                  style={{
+                    background: "#e85c00",
+                    color: "#fff",
+                    fontSize: 8,
+                    fontWeight: 900,
+                    letterSpacing: "0.2em",
+                    padding: "2px 7px",
+                    borderRadius: 2,
+                  }}
+                >
+                  LIMITED
+                </span>
+              )}
+              <span
+                style={{
+                  fontSize: 11,
+                  color: produkColor,
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                }}
+              >
+                {produkNama}
+              </span>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 24 }}>
+            <div>
+              <p
+                style={{
+                  fontSize: 9,
+                  color: "#555",
+                  letterSpacing: "0.15em",
+                  margin: "0 0 4px",
+                }}
+              >
+                UKURAN
+              </p>
+              <p
+                style={{
+                  fontSize: 18,
+                  fontWeight: 900,
+                  color: "#fff",
+                  margin: 0,
+                  fontFamily: "'Arial Black', Arial, sans-serif",
+                }}
+              >
+                {data?.ukuran || "—"}
+              </p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontSize: 9,
+                  color: "#555",
+                  letterSpacing: "0.15em",
+                  margin: "0 0 4px",
+                }}
+              >
+                JUMLAH
+              </p>
+              <p
+                style={{
+                  fontSize: 18,
+                  fontWeight: 900,
+                  color: "#fff",
+                  margin: 0,
+                  fontFamily: "'Arial Black', Arial, sans-serif",
+                }}
+              >
+                {data?.jumlah || 1} pcs
+              </p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontSize: 9,
+                  color: "#555",
+                  letterSpacing: "0.15em",
+                  margin: "0 0 4px",
+                }}
+              >
+                LENGAN
+              </p>
+              <p
+                style={{
+                  fontSize: 15,
+                  fontWeight: 900,
+                  color: lenganColor,
+                  margin: 0,
+                  fontFamily: "'Arial Black', Arial, sans-serif",
+                }}
+              >
+                {lenganLabel}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Rincian harga */}
+      <div
+        style={{ padding: "16px 28px", borderBottom: "0.5px solid #1a1a1a" }}
+      >
+        <p
+          style={{
+            fontSize: 9,
+            color: "#555",
+            letterSpacing: "0.25em",
+            margin: "0 0 10px",
+          }}
+        >
+          RINCIAN HARGA
+        </p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: 6,
+          }}
+        >
+          <span style={{ fontSize: 12, color: "#888" }}>Harga jersey</span>
+          <span style={{ fontSize: 12, color: "#fff" }}>
+            {fmt(hargaSatuan)}
+          </span>
+        </div>
+        {tambahanLengan > 0 && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: 6,
+            }}
+          >
+            <span style={{ fontSize: 12, color: "#888" }}>Lengan panjang</span>
+            <span style={{ fontSize: 12, color: "#cc0000" }}>
+              +{fmt(tambahanLengan)}
+            </span>
+          </div>
+        )}
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <span style={{ fontSize: 12, color: "#888" }}>
+            {fmt(hargaPerPcs)} × {data?.jumlah || 1} pcs
+          </span>
+          <span style={{ fontSize: 12, color: "#fff" }}>{fmt(total)}</span>
+        </div>
+      </div>
+
+      {/* Total */}
+      <div
+        style={{
+          padding: "16px 28px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderBottom: "0.5px solid #1a1a1a",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 10,
+            fontWeight: 900,
+            letterSpacing: "0.2em",
+            fontFamily: "'Arial Black', Arial, sans-serif",
+          }}
+        >
+          TOTAL PEMBAYARAN
+        </span>
+        <span
+          style={{
+            fontSize: 22,
+            fontWeight: 900,
+            color: "#fff",
+            fontFamily: "'Arial Black', Arial, sans-serif",
+          }}
+        >
+          {fmt(total)}
+        </span>
+      </div>
+
+      {/* Footer */}
+      <div
+        style={{
+          background: "#060606",
+          padding: "10px 28px",
+          display: "flex",
+          justifyContent: "space-between",
+          borderTop: "0.5px solid #1a1a1a",
+        }}
+      >
+        <p style={{ fontSize: 9, color: "#333", margin: 0 }}>
+          Simpan sebagai bukti pemesanan
+        </p>
+        <p style={{ fontSize: 9, color: "#333", margin: 0 }}>ukmsoccer49ers</p>
+      </div>
+    </div>
+  );
+}
+
 function OrderOverlay({
   status,
   setStatus,
@@ -1883,22 +2337,85 @@ function OrderOverlay({
     };
   }, []);
 
-  const buatPesan = (f) => {
-    const produkDipilih = PRODUK.find((p) => f.produk.startsWith(p.nama));
-    const namaProduk = produkDipilih?.nama ?? f.produk;
-    const hargaSatuan = produkDipilih
-      ? parseInt(produkDipilih.harga.replace(/[^0-9]/g, ""), 10)
-      : 170000;
-    const tambahanLengan = f.lenganPanjang ? 15000 : 0;
-    const total = (hargaSatuan + tambahanLengan) * f.jumlah;
-    const fmtRp = (n) => "Rp " + n.toLocaleString("id-ID");
+  const invoiceRef = useRef(null);
+  const [invoiceImgUrl, setInvoiceImgUrl] = useState(null);
+  const [invoiceBlobUrl, setInvoiceBlobUrl] = useState(null);
+  const [capturing, setCapturing] = useState(false);
 
-    return `PRE-ORDER JERSEY UKM SOCCER 49ERS\n─────────────────\nNo. Invoice: ${invoiceData.nomorInvoice}\n─────────────────\nProduk       : ${namaProduk}\nNama         : ${f.namaLengkap}\nWhatsApp     : ${f.whatsapp}\nUkuran       : ${f.ukuran}\nJumlah       : ${f.jumlah} pcs\nLengan Panjang: ${f.lenganPanjang ? "Ya (+Rp 15.000)" : "Tidak"}\n─────────────────\nHarga Satuan : ${fmtRp(hargaSatuan + tambahanLengan)}\nTotal Bayar  : ${fmtRp(total)}\n─────────────────${f.catatan ? `\nCatatan      : ${f.catatan}\n─────────────────` : ""}\nHalo kak, saya ingin konfirmasi pesanan pre-order jersey di atas. Terima kasih!`.trim();
+  const captureAndUpload = async () => {
+    if (!invoiceRef.current) return;
+    try {
+      setCapturing(true);
+      const html2canvas = (
+        await import("https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.esm.js")
+      ).default;
+      const canvas = await html2canvas(invoiceRef.current, {
+        backgroundColor: "#0a0a0a",
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      });
+      const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
+
+      // Simpan blob URL untuk download langsung tanpa redirect
+      const blobUrl = URL.createObjectURL(blob);
+      setInvoiceBlobUrl(blobUrl);
+
+      // Upload ke ImgBB untuk dikirim ke WA
+      const formData = new FormData();
+      formData.append("image", blob, "invoice.png");
+      const res = await fetch(
+        `https://api.imgbb.com/1/upload?key=${CONFIG.imgbbApiKey}`,
+        { method: "POST", body: formData },
+      );
+      const json = await res.json();
+      const url = json?.data?.url;
+      if (url) {
+        setInvoiceImgUrl(url);
+        await fetch(CONFIG.googleScriptUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            type: "invoice_image",
+            nomorInvoice: submittedForm?.nomorInvoice,
+            whatsapp: submittedForm?.whatsapp,
+            invoiceImageUrl: url,
+          }),
+        });
+      }
+    } catch (err) {
+      console.error("Capture error:", err);
+    } finally {
+      setCapturing(false);
+    }
   };
 
-  const handleKonfirmasiWA = () => {
-    const msg = encodeURIComponent(buatPesan(submittedForm));
-    window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, "_blank");
+  useEffect(() => {
+    const timer = setTimeout(() => captureAndUpload(), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Cleanup blob URL saat overlay ditutup
+  useEffect(() => {
+    return () => {
+      if (invoiceBlobUrl) URL.revokeObjectURL(invoiceBlobUrl);
+    };
+  }, [invoiceBlobUrl]);
+
+  const handleDownloadInvoice = () => {
+    if (!invoiceBlobUrl) return;
+    const a = document.createElement("a");
+    a.href = invoiceBlobUrl;
+    a.download = `Invoice-${submittedForm?.nomorInvoice || "order"}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  const handleTutup = () => {
+    onClose?.();
+    setStatus(null);
+    setSubmittedForm(null);
   };
 
   const handlePesanLagi = () => {
@@ -1909,15 +2426,17 @@ function OrderOverlay({
     }, 100);
   };
 
-  const handleTutup = () => {
-    onClose?.();
-    setStatus(null);
-    setSubmittedForm(null);
-  };
-
   const produkData = PRODUK.find((p) =>
     submittedForm?.produk?.startsWith(p.nama),
   );
+  const produkNamaOverlay = submittedForm?.produk || "";
+  const produkColor = produkNamaOverlay.includes("HOME")
+    ? "#ffffff"
+    : produkNamaOverlay.includes("AWAY")
+      ? "#800020"
+      : produkNamaOverlay.includes("THIRD")
+        ? "#1a56db"
+        : "#ffffff";
   const hargaSatuan = produkData
     ? parseInt(produkData.harga.replace(/[^0-9]/g, ""), 10)
     : 170000;
@@ -1928,6 +2447,28 @@ function OrderOverlay({
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4 overflow-y-auto">
+      {/* Hidden InvoiceCard khusus untuk di-capture */}
+      <div
+        style={{
+          position: "fixed",
+          top: -9999,
+          left: -9999,
+          zIndex: -1,
+          pointerEvents: "none",
+        }}
+      >
+        <InvoiceCard
+          data={submittedForm}
+          invoiceData={invoiceData}
+          hargaSatuan={hargaSatuan}
+          tambahanLengan={tambahanLengan}
+          hargaPerPcs={hargaPerPcs}
+          total={total}
+          innerRef={invoiceRef}
+          logoSrc={logo}
+        />
+      </div>
+
       <div
         className="w-full max-w-lg my-auto"
         style={{ fontFamily: "'Arial Black', Arial, sans-serif" }}
@@ -1953,7 +2494,7 @@ function OrderOverlay({
                 className="text-[9px] text-zinc-700 tracking-[0.25em] mt-1 font-normal"
                 style={{ fontFamily: "Arial, sans-serif" }}
               >
-                PRE-ORDER 2025
+                PRE-ORDER 2026
               </p>
             </div>
             <div className="text-right">
@@ -2046,7 +2587,10 @@ function OrderOverlay({
                   >
                     PRODUK
                   </p>
-                  <p className="text-sm font-black text-white tracking-[0.08em]">
+                  <p
+                    className="text-sm font-black tracking-[0.08em]"
+                    style={{ color: produkColor }}
+                  >
                     {produkData?.nama || submittedForm?.produk}
                   </p>
                 </div>
@@ -2183,19 +2727,16 @@ function OrderOverlay({
           <div className="px-7 py-5 grid gap-2">
             <div className="grid grid-cols-5 gap-2">
               <button
-                onClick={handleKonfirmasiWA}
-                className="col-span-3 flex items-center justify-center gap-2 bg-white text-black font-black text-[10px] tracking-[0.2em] py-3 hover:bg-zinc-200 transition-colors"
+                onClick={handleDownloadInvoice}
+                disabled={!invoiceBlobUrl || capturing}
+                className="col-span-3 flex items-center justify-center gap-2 py-3 text-[10px] tracking-[0.2em] border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-400 transition-colors bg-transparent font-black disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{ fontFamily: "'Arial Black', sans-serif" }}
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-                KONFIRMASI WA
+                {capturing
+                  ? "MENYIAPKAN INVOICE..."
+                  : invoiceBlobUrl
+                    ? "⬇ DOWNLOAD INVOICE"
+                    : "MEMPROSES INVOICE..."}
               </button>
               <button
                 onClick={handlePesanLagi}
@@ -2470,12 +3011,25 @@ function AdminPicker() {
               className="flex flex-col items-center gap-2 px-5 py-4 border border-zinc-800 hover:border-white transition-colors"
             >
               <div className="w-9 h-9 bg-white flex items-center justify-center flex-shrink-0">
-                <span className="text-black text-sm font-black" style={{ fontFamily: "'Arial Black', sans-serif" }}>
+                <span
+                  className="text-black text-sm font-black"
+                  style={{ fontFamily: "'Arial Black', sans-serif" }}
+                >
                   {a.nama.charAt(0).toUpperCase()}
                 </span>
               </div>
-              <p className="text-white text-xs font-bold" style={{ fontFamily: "Arial, sans-serif" }}>{a.nama}</p>
-              <p className="text-zinc-600 text-[9px] tracking-[0.15em] uppercase" style={{ fontFamily: "Arial, sans-serif" }}>{a.label}</p>
+              <p
+                className="text-white text-xs font-bold"
+                style={{ fontFamily: "Arial, sans-serif" }}
+              >
+                {a.nama}
+              </p>
+              <p
+                className="text-zinc-600 text-[9px] tracking-[0.15em] uppercase"
+                style={{ fontFamily: "Arial, sans-serif" }}
+              >
+                {a.label}
+              </p>
               <WaIcon />
             </a>
           ))}
@@ -2490,7 +3044,7 @@ function ComingSoon() {
     <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 text-center">
       <img src={logo} alt="Logo" className="h-20 mb-8 object-contain" />
       <p className="text-zinc-600 text-xs tracking-[0.4em] mb-3 uppercase">
-        UKM Soccer 49ers — Pre-Order 2026
+        UKM Soccer 49ers
       </p>
       <h1
         className="text-white font-black text-4xl md:text-6xl tracking-tight mb-6"
@@ -2506,6 +3060,35 @@ function ComingSoon() {
       </p>
       <p className="text-orange-500 text-xs font-black tracking-widest mb-2 uppercase">
         ⚡ Kuota terbatas — jangan sampai kehabisan!
+      </p>
+      <AdminPicker />
+    </div>
+  );
+}
+
+// ── PRE-ORDER CLOSED — tampil otomatis saat countdown habis ──────────────────
+function PreOrderClosed() {
+  return (
+    <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 text-center">
+      <img src={logo} alt="Logo" className="h-20 mb-8 object-contain" />
+      <p className="text-zinc-600 text-xs tracking-[0.4em] mb-3 uppercase">
+        UKM Soccer 49ers
+      </p>
+      <h1
+        className="text-white font-black text-4xl md:text-6xl tracking-tight mb-6"
+        style={{ fontFamily: "'Arial Black', Arial, sans-serif" }}
+      >
+        PRE-ORDER
+        <br />
+        TELAH DITUTUP
+      </h1>
+      <div className="w-12 h-px bg-zinc-700 mb-6" />
+      <p className="text-zinc-500 text-sm max-w-xs mb-2">
+        Terima kasih atas antusiasme kalian! Pre-order jersey eksklusif UKM
+        Soccer 49ers telah resmi ditutup.
+      </p>
+      <p className="text-orange-500 text-xs font-black tracking-widest mb-6 uppercase">
+        🙏 Sampai jumpa di pre-order berikutnya!
       </p>
       <AdminPicker />
     </div>
@@ -2529,7 +3112,11 @@ export default function App() {
     setOverlayStatus("success");
   };
 
+  // ✅ Cek apakah waktu pre-order sudah habis
+  const sudahHabis = new Date() >= CONFIG.countdownTarget;
+
   if (COMING_SOON) return <ComingSoon />;
+  if (sudahHabis) return <PreOrderClosed />;
 
   return (
     <div className="bg-black font-sans antialiased">

@@ -6,15 +6,15 @@ import { g1, g2, g3, g4, g5, g6 } from "./assets";
 const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
-  whatsappNumber: "6285730603585",
-  countdownTarget: new Date("2026-06-15T23:59:59"),
+  whatsappNumber: "62859181970159",
+  countdownTarget: new Date("2026-05-11T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",
     templateId: "YOUR_TEMPLATE_ID",
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbw9ik6GR14E_2WSjXwjGorcLGWJyAQAzrQMsSsUF8ZXXMFpQy6SC6vhYgl6gsmZDvZC7w/exec",
+    "https://script.google.com/macros/s/AKfycbzyvrdOtN853Y2EImkcrTCik7Lj3QVh_R-ZmpBGZ-pZeKzJqtl3ZfkBjIWz0Kd3PL89Yg/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
     { nama: "Citra", nomor: "6281235285519", label: "Admin 1" },
@@ -1183,11 +1183,11 @@ function Details() {
                 </thead>
                 <tbody>
                   {[
-                    { s: "S", dada: 50, panjang: 68, lengan: 23 },
-                    { s: "M", dada: 52, panjang: 70, lengan: 24 },
-                    { s: "L", dada: 54, panjang: 72, lengan: 25 },
-                    { s: "XL", dada: 56, panjang: 74, lengan: 26 },
-                    { s: "XXL", dada: 58, panjang: 76, lengan: 27 },
+                    { s: "S", dada: 46, panjang: 68, lengan: 23 },
+                    { s: "M", dada: 48, panjang: 69, lengan: 24 },
+                    { s: "L", dada: 52, panjang: 72, lengan: 25 },
+                    { s: "XL", dada: 53, panjang: 75, lengan: 26 },
+                    { s: "XXL", dada: 55, panjang: 79, lengan: 27 },
                   ].map((row, i) => (
                     <tr
                       key={row.s}
@@ -1212,8 +1212,7 @@ function Details() {
             </div>
             <p className="text-zinc-400 text-xs mt-3 leading-relaxed">
               Ukuran di atas berdasarkan pengukuran produk jadi. Toleransi 1-2
-              cm mungkin terjadi karena proses produksi garment-dyed kami yang
-              unik.
+              cm mungkin terjadi karena proses produksi.
             </p>
           </div>
         </div>
@@ -1227,12 +1226,12 @@ function PreOrderInfo() {
     {
       n: "01",
       judul: "Isi Formulir Pesanan",
-      desc: "Lengkapi formulir dengan data diri, ukuran, dan warna pilihan kamu.",
+      desc: "Lengkapi formulir dengan data diri, ukuran, dan jersey pilihan kamu.",
     },
     {
       n: "02",
       judul: "Konfirmasi Pembayaran",
-      desc: "Tim kami akan menghubungi kamu via WhatsApp untuk konfirmasi pembayaran.",
+      desc: "Silahkan membayar dengan cara transfer antar bank dan lampirkan bukti transfernya.",
     },
     {
       n: "03",
@@ -2775,7 +2774,7 @@ function Footer() {
         {/* Top section — 3 kolom: Alamat | Brand (tengah) | Hubungi Kami */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
           {/* Kolom 1 — Alamat */}
-          <div>
+          <div className="hidden md:block">
             <p className="text-zinc-600 text-xs tracking-[0.3em] uppercase mb-5">
               Alamat
             </p>
@@ -2833,6 +2832,46 @@ function Footer() {
 
           {/* Kolom 3 — Hubungi Kami */}
           <div>
+            {/* Alamat — hanya tampil di mobile, di atas Hubungi Kami */}
+            <div className="md:hidden mb-6 pb-6 border-b border-zinc-800">
+              <p className="text-zinc-600 text-xs tracking-[0.3em] uppercase mb-5">
+                Alamat
+              </p>
+              <p className="text-zinc-400 text-xs leading-relaxed tracking-wide mb-1">
+                UKM Soccer 49ers
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed tracking-wide">
+                Universitas Muhammadiyah Jember
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed tracking-wide">
+                Jl. Karimata No.49, Sumbersari
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed tracking-wide">
+                Jember, Jawa Timur 68124
+              </p>
+              <a
+                href="https://maps.google.com/?q=Universitas+Muhammadiyah+Jember"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-zinc-600 text-xs mt-4 hover:text-zinc-300 transition-colors tracking-wide"
+              >
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Lihat di Maps
+              </a>
+            </div>
+
             <p className="text-zinc-600 text-xs tracking-[0.3em] uppercase mb-5">
               Hubungi Kami
             </p>
@@ -2969,10 +3008,6 @@ function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-zinc-700 text-xs tracking-[0.15em]">
             © 2026 {CONFIG.brand}. All rights reserved.
-          </p>
-          <p className="text-zinc-700 text-xs tracking-[0.15em]">
-            Pre-order ditutup{" "}
-            <span className="text-zinc-500">15 Juni 2026</span>
           </p>
         </div>
       </div>

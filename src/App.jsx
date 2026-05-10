@@ -6,15 +6,15 @@ import { g1, g2, g3, g4, g5, g6 } from "./assets";
 const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
-  whatsappNumber: "62859181970159",
-  countdownTarget: new Date("2026-05-11T23:59:59"),
+  whatsappNumber: "6281235285519",
+  countdownTarget: new Date("2026-05-31T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",
     templateId: "YOUR_TEMPLATE_ID",
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbzyvrdOtN853Y2EImkcrTCik7Lj3QVh_R-ZmpBGZ-pZeKzJqtl3ZfkBjIWz0Kd3PL89Yg/exec",
+    "https://script.google.com/macros/s/AKfycbwwAguPvY6E8PV1Rrk5yP0g5H4Nnd_zd_ymXxAF4BjFBfb6x8E9XEzqhUVWuQpkEMTH0w/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
     { nama: "Citra", nomor: "6281235285519", label: "Admin 1" },
@@ -1236,12 +1236,12 @@ function PreOrderInfo() {
     {
       n: "03",
       judul: "Produksi Dimulai",
-      desc: "Kami memproduksi item kamu — setiap produk dibuat per pesanan. 7–14 hari kerja.",
+      desc: "Kami memproduksi item kamu — setiap produk dibuat per pesanan.",
     },
     {
       n: "04",
-      judul: "Dikirim ke Kamu",
-      desc: "Estimasi pengiriman 2–5 hari setelah produksi selesai. Nomor resi akan diberikan.",
+      judul: "Siap untuk diambil",
+      desc: "Kami akan menghubungi kamu untuk penjadwalan setelah produk selesai dibuat.",
     },
   ];
 
@@ -1264,9 +1264,9 @@ function PreOrderInfo() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 border border-zinc-800 mb-16">
           {[
-            { label: "Batas Pre-Order", val: "15 JUNI 2026" },
-            { label: "Waktu Produksi", val: "7–14 HARI" },
-            { label: "Estimasi Pengiriman", val: "2–5 HARI" },
+            { label: "Batas Pre-Order", val: "31 MEI 2026" },
+            { label: "Waktu Produksi", val: "–" },
+            { label: "Estimasi Pengiriman", val: "–" },
           ].map((stat, i) => (
             <div
               key={stat.label}
@@ -1306,8 +1306,7 @@ function PreOrderInfo() {
         <div className="mt-14 border-l-2 border-white pl-6">
           <p className="text-zinc-400 text-xs leading-relaxed max-w-xl">
             Pre-order berarti produksi dimulai setelah periode pemesanan
-            ditutup. Semua item diproduksi khusus untuk pesanan kamu — tidak ada
-            stok sisa, tidak dijual ulang.
+            ditutup. Semua item diproduksi khusus untuk pesanan kamu.
           </p>
         </div>
       </div>
@@ -3015,7 +3014,7 @@ function Footer() {
   );
 }
 // ── COMING SOON — set true untuk menonaktifkan website sementara ─────────────
-const COMING_SOON = true;
+const COMING_SOON = false;
 
 function AdminPicker() {
   const [open, setOpen] = useState(false);

@@ -6,7 +6,7 @@ import { g1, g2, g3, g4, g5, g6 } from "./assets";
 const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
-  whatsappNumber: "6281235285519",
+  whatsappNumber: "62881026585122",
   countdownTarget: new Date("2026-05-31T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",
@@ -14,10 +14,10 @@ const CONFIG = {
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbx8_uw8EqJgOB7wSUDWucXhZ3Al4WTe7SUdj_4_wwHHZ9DHpw2H3c30IAPGA5KXzJUgww/exec",
+    "https://script.google.com/macros/s/AKfycbzRalN0Ck9cdSCUHyE4iHkhTYFp6z4UbVT3GbQlvM5axNP0NIVtHGemf7-SyuNWvMzMiA/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
-    { nama: "Citra", nomor: "6281235285519", label: "Admin 1" },
+    { nama: "Citra", nomor: "62881026585122", label: "Admin 1" },
     { nama: "Fahmi", nomor: "6285159526990", label: "Admin 2" },
     { nama: "Asep", nomor: "6287765540344", label: "Admin 3" },
   ],

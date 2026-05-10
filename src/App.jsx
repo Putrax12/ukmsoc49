@@ -14,7 +14,7 @@ const CONFIG = {
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbwwAguPvY6E8PV1Rrk5yP0g5H4Nnd_zd_ymXxAF4BjFBfb6x8E9XEzqhUVWuQpkEMTH0w/exec",
+    "https://script.google.com/macros/s/AKfycbx8_uw8EqJgOB7wSUDWucXhZ3Al4WTe7SUdj_4_wwHHZ9DHpw2H3c30IAPGA5KXzJUgww/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
     { nama: "Citra", nomor: "6281235285519", label: "Admin 1" },

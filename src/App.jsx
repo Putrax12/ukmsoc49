@@ -14,7 +14,7 @@ const CONFIG = {
     publicKey: "YOUR_PUBLIC_KEY",
   },
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbzRalN0Ck9cdSCUHyE4iHkhTYFp6z4UbVT3GbQlvM5axNP0NIVtHGemf7-SyuNWvMzMiA/exec",
+    "https://script.google.com/macros/s/AKfycbwdh0ZYpVbv6aoL3jvbCGC06xmVx5touIJ1iw701RJQg_fRB3ROXGQlUqqo2VB71QouAg/exec",
   imgbbApiKey: "2df15d1feb18ef0df8349d9f03719dc3",
   admin: [
     { nama: "Citra", nomor: "62881026585122", label: "Admin 1" },
@@ -1183,11 +1183,11 @@ function Details() {
                 </thead>
                 <tbody>
                   {[
-                    { s: "S", dada: 46, panjang: 68, lengan: 23 },
-                    { s: "M", dada: 48, panjang: 69, lengan: 24 },
-                    { s: "L", dada: 52, panjang: 72, lengan: 25 },
-                    { s: "XL", dada: 53, panjang: 75, lengan: 26 },
-                    { s: "XXL", dada: 55, panjang: 79, lengan: 27 },
+                    { s: "S", dada: 48, panjang: 62, lengan: 23 },
+                    { s: "M", dada: 50, panjang: 64, lengan: 24 },
+                    { s: "L", dada: 52, panjang: 65, lengan: 25 },
+                    { s: "XL", dada: 54, panjang: 67, lengan: 26 },
+                    { s: "XXL", dada: 56, panjang: 69, lengan: 27 },
                   ].map((row, i) => (
                     <tr
                       key={row.s}

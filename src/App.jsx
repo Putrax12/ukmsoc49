@@ -7,7 +7,7 @@ const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
   whatsappNumber: "62881026585122",
-  countdownTarget: new Date("2026-05-31T23:59:59"),
+  countdownTarget: new Date("2026-05-15T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",
     templateId: "YOUR_TEMPLATE_ID",

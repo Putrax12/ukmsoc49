@@ -7,7 +7,7 @@ const CONFIG = {
   brand: "UKM SOCCER 49ers",
   tagline: "Pre-Order Edisi Terbatas",
   whatsappNumber: "62881026585122",
-  countdownTarget: new Date("2026-05-15T23:59:59"),
+  countdownTarget: new Date("2026-06-15T23:59:59"),
   emailjs: {
     serviceId: "YOUR_SERVICE_ID",
     templateId: "YOUR_TEMPLATE_ID",
@@ -3014,7 +3014,7 @@ function Footer() {
   );
 }
 // ── COMING SOON — set true untuk menonaktifkan website sementara ─────────────
-const COMING_SOON = true;
+const COMING_SOON = false;
 
 function AdminPicker() {
   const [open, setOpen] = useState(false);

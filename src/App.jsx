@@ -3014,7 +3014,7 @@ function Footer() {
   );
 }
 // ── COMING SOON — set true untuk menonaktifkan website sementara ─────────────
-const COMING_SOON = false;
+const COMING_SOON = true;
 
 function AdminPicker() {
   const [open, setOpen] = useState(false);

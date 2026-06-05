@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { bgImage, logo, home, away, third } from "./assets";
 import { g1, g2, g3, g4, g5, g6 } from "./assets";
 
@@ -3175,6 +3176,7 @@ export default function App() {
           }}
         />
       )}
+      <SpeedInsights />
     </div>
   );
 }
